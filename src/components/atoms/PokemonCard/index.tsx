@@ -1,6 +1,6 @@
 import { createSignal, createEffect, Show } from 'solid-js';
 import { createQuery } from '@tanstack/solid-query';
-import { Pokemon } from '../../../types/Poke';
+import { Pokemon } from '../../../types/Objet';
 
 const PokemonCard = () => {
   const [dexId, setDexId] = createSignal('10');
