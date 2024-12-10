@@ -7,9 +7,8 @@ import {
   MutationCache,
   QueryCache,
 } from '@tanstack/solid-query';
-
+import Passing from './routes/passing';
 import './index.css';
-import App from './App';
 
 const root = document.getElementById('root');
 const client = new QueryClient({
@@ -44,13 +43,11 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
-
-
 render(() => (
   <ErrorBoundary fallback={<div>Error...</div>}>
     <Suspense fallback={<div>Loading...</div>}>
       <QueryClientProvider client={client}>
-        <App />
+        <Passing />
       </QueryClientProvider>
     </Suspense>
   </ErrorBoundary>
