@@ -1,6 +1,6 @@
 import { createSignal, createEffect, Show } from 'solid-js';
 import { createQuery } from '@tanstack/solid-query';
-import { Pokemon } from '../../../types/Objet';
+import { Pokemon } from '@/types/Objet';
 
 interface ComponentProps {
     dexId: string;

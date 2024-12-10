@@ -7,7 +7,7 @@ import {
   MutationCache,
   QueryCache,
 } from '@tanstack/solid-query';
-import Passing from './routes/passing';
+import Passing from '@/routes/passing';
 import './index.css';
 
 const root = document.getElementById('root');

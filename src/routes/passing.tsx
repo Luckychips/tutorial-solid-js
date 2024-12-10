@@ -2,8 +2,8 @@ import { lazy } from 'solid-js';
 import { Router, Route } from '@solidjs/router';
 import App from './core';
 
-import Home from '../pages/Home';
-const Pokemon = lazy(() => import('../pages/Pokemon'));
+import Home from '@/pages/Home';
+const Pokemon = lazy(() => import('@/pages/Pokemon'));
 
 const Passing = () => {
     return (

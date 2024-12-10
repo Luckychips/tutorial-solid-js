@@ -1,5 +1,5 @@
 import { useParams } from '@solidjs/router';
-import { PokemonCard } from '../../components/molecules';
+import { PokemonCard } from '@/components/molecules';
 
 const PokemonPage = () => {
     const { id } = useParams();
