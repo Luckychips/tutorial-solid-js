@@ -1,5 +1,6 @@
 import { createEffect, createSignal, For } from 'solid-js';
 import { createQuery } from '@tanstack/solid-query';
+import { fetcher } from '@/utils/core';
 import { BaseObjet } from '@/types/Base';
 import * as S from './styles';
 
@@ -13,15 +14,8 @@ interface Retrieved {
 const PokemonList = () => {
     const [retrieved, setRetrieved] = createSignal<Retrieved | null>(null);
     const state = createQuery(() => ({
-        queryKey: ['get:pokemon_list'],
-        queryFn: async () => {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch');
-            }
-
-            return await response.json();
-        },
+        queryKey: ['get:pokemon_list', { url: `https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0` }],
+        queryFn: fetcher,
         retry: 0,
         throwOnError: true,
     }));
