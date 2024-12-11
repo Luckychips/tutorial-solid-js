@@ -1,7 +1,9 @@
+import { PokemonList } from '@/components/organisms';
+
 const PokeDexPage = () => {
     return (
         <section>
-            poke dex page
+            <PokemonList />
         </section>
     );
 };

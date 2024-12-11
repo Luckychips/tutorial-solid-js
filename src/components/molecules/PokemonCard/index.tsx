@@ -28,6 +28,7 @@ const PokemonCard = ({ dexId }: ComponentProps) => {
 
     return (
         <Show when={pokemon()}>
+            <div>{pokemon()?.id}</div>
             <div>{pokemon()?.name}</div>
             <img
                 src={pokemon()?.sprites.front_default}
