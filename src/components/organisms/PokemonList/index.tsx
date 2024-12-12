@@ -12,9 +12,10 @@ interface Retrieved {
 }
 
 const PokemonList = () => {
+    const [count, setCount] = createSignal(0);
     const [retrieved, setRetrieved] = createSignal<Retrieved | null>(null);
     const state = createQuery(() => ({
-        queryKey: ['get:pokemon_list', { url: `https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0` }],
+        queryKey: ['get:pokemon_list', { url: `https://pokeapi.co/api/v2/pokemon/?limit=${count()}&offset=0` }],
         queryFn: fetcher,
         retry: 0,
         throwOnError: true,
@@ -22,8 +23,10 @@ const PokemonList = () => {
 
     const getPrefixZero = (number: number) => {
         if (number > 0 && number < 10) {
-            return `00${number}`;
+            return `000${number}`;
         } else if (number >= 10 && number < 100) {
+            return `00${number}`;
+        } else if (number >= 100 && number < 999) {
             return `0${number}`;
         } else {
             return number;
@@ -31,7 +34,11 @@ const PokemonList = () => {
     };
 
     createEffect(() => {
-        setRetrieved(state.data);
+        if (state.data) {
+            // setCount(state.data.count);
+            setCount(1025);
+            setRetrieved(state.data);
+        }
     });
 
     return (
@@ -39,8 +46,15 @@ const PokemonList = () => {
             <For each={retrieved()?.results} fallback={<div>Loading...</div>}>
                 {(item, index) => (
                     <S.ListItem>
-                        <span>{getPrefixZero(index()+1)}</span>
-                        <span>{item.name}</span>
+                        <div>
+                            <span>{getPrefixZero(index() + 1)}</span>
+                            <S.CharacterName>{item.name}</S.CharacterName>
+                        </div>
+                        <figure>
+                            <img
+                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index() + 1}.png`}
+                                alt={item.name}/>
+                        </figure>
                     </S.ListItem>
                 )}
             </For>
