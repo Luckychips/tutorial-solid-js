@@ -6,7 +6,7 @@ const PokeShowPage = () => {
 
     setInterval(() => {
         setDexId(i => i + 1);
-    }, 500);
+    }, 1500);
 
     return (
         <section>

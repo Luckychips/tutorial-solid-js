@@ -1,12 +1,14 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
 import { ErrorBoundary, Suspense } from 'solid-js';
+import { MetaProvider } from '@solidjs/meta';
 import {
   QueryClient,
   QueryClientProvider,
   MutationCache,
   QueryCache,
 } from '@tanstack/solid-query';
+import { MetaHead } from '@/components';
 import Passing from '@/routes/passing';
 import './index.css';
 
@@ -44,11 +46,13 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 render(() => (
-  <ErrorBoundary fallback={<div>Error...</div>}>
-    <Suspense fallback={<div>Loading...</div>}>
-      <QueryClientProvider client={client}>
-        <Passing />
-      </QueryClientProvider>
-    </Suspense>
-  </ErrorBoundary>
+  <MetaProvider>
+    <ErrorBoundary fallback={<div>Error...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <QueryClientProvider client={client}>
+          <Passing />
+        </QueryClientProvider>
+      </Suspense>
+    </ErrorBoundary>
+  </MetaProvider>
 ), root!);

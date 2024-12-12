@@ -1,6 +1,6 @@
 import { lazy } from 'solid-js';
 import { Router, Route } from '@solidjs/router';
-import App from './core';
+import { MetaHead } from '@/components';
 
 import Home from '@/pages/Home';
 import PokeDex from '@/pages/PokeDex';
@@ -9,7 +9,14 @@ const Pokemon = lazy(() => import('@/pages/Pokemon'));
 
 const Passing = () => {
     return (
-        <Router root={App}>
+        <Router root={(props) => (
+            <>
+                <MetaHead />
+                <header></header>
+                <main>{props.children}</main>
+                <footer></footer>
+            </>
+        )}>
             <Route path="/" component={Home} />
             <Route path="/pokedex" component={PokeDex} />
             <Route path="/pokeshow" component={PokeShow} />
