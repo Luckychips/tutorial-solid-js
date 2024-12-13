@@ -1,8 +1,13 @@
-import { createEffect, createSignal, For } from 'solid-js';
+import { createEffect, createSignal, lazy, For } from 'solid-js';
 import { createQuery } from '@tanstack/solid-query';
 import { fetcher } from '@/utils/core';
 import { BaseObjet } from '@/types/Base';
 import * as S from './styles';
+
+const LazyImage = lazy(async () => {
+    await new Promise(r => setTimeout(r, 0));
+    return import('@/components/atoms/LazyImage');
+});
 
 interface Retrieved {
     count: number;
@@ -51,9 +56,10 @@ const PokemonList = () => {
                             <S.CharacterName>{item.name}</S.CharacterName>
                         </div>
                         <figure>
-                            <img
+                            <LazyImage
                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index() + 1}.png`}
-                                alt={item.name}/>
+                                alt={item.name}
+                            />
                         </figure>
                     </S.ListItem>
                 )}
