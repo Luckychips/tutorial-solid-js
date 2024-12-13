@@ -3,7 +3,8 @@ import { styled } from '@macaron-css/solid';
 const Container = styled('ul', {
     base: {
         listStyle: 'none',
-        paddingLeft: '20px !important',
+        padding: '0 !important',
+        margin: '0 !important',
     },
 });
 
@@ -13,6 +14,7 @@ const ListItem = styled('li', {
         justifyContent: 'space-between',
         alignItems: 'center',
         borderBottom: '1px solid #efefef',
+        padding: '5px 15px',
     },
 })
 
@@ -23,8 +25,15 @@ const CharacterName = styled('span', {
     },
 });
 
+const ThumbnailContainer = styled('figure', {
+    base: {
+        margin: '0 !important',
+    },
+})
+
 export {
     Container,
     ListItem,
     CharacterName,
+    ThumbnailContainer,
 };

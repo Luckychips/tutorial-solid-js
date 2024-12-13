@@ -55,12 +55,12 @@ const PokemonList = () => {
                             <span>{getPrefixZero(index() + 1)}</span>
                             <S.CharacterName>{item.name}</S.CharacterName>
                         </div>
-                        <figure>
+                        <S.ThumbnailContainer>
                             <LazyImage
                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index() + 1}.png`}
                                 alt={item.name}
                             />
-                        </figure>
+                        </S.ThumbnailContainer>
                     </S.ListItem>
                 )}
             </For>
