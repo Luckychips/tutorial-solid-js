@@ -6,6 +6,7 @@ import Home from '@/pages/Home';
 import PokeDex from '@/pages/PokeDex';
 import PokeShow from '@/pages/PokeShow';
 const Pokemon = lazy(() => import('@/pages/Pokemon'));
+import Resume from '@/pages/Resume';
 
 const Passing = () => {
     return (
@@ -21,6 +22,7 @@ const Passing = () => {
             <Route path="/pokedex" component={PokeDex} />
             <Route path="/pokeshow" component={PokeShow} />
             <Route path="/pokemon/:id" component={Pokemon} />
+            <Route path="/resume" component={Resume} />
         </Router>
     );
 };
